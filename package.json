@@ -2,6 +2,7 @@
   "name": "x-snake",
   "version": "1.0.0-develop",
   "scripts": {
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,8 @@
   "devDependencies": {
     "webpack": "^5.2.0",
     "webpack-cli": "^4.1.0"
+  },
+  "dependencies": {
+    "pixi.js": "^5.3.3"
   }
 }
