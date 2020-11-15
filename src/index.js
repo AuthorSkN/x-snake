@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 import Snake from './snake.png';
 
-const app = new PIXI.Application();
+const app = new PIXI.Application({width: 1200, height: 600});
     document.body.appendChild(app.view);
 
     let count = 0;
@@ -25,7 +25,7 @@ const app = new PIXI.Application();
     const g = new PIXI.Graphics();
     g.x = strip.x;
     g.y = strip.y;
-    app.stage.addChild(g);
+    //app.stage.addChild(g);
 
     // start animating
     app.ticker.add(() => {
