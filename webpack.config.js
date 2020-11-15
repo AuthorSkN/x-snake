@@ -10,5 +10,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin()
   ],
+  module: {
+    rules: [{
+      test: /\.(png|svg|jpg|jpeg|gif)$/i,
+      type: 'asset/resource',
+    }]
+  }
 
 };
