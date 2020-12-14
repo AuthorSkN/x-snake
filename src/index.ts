@@ -1,5 +1,4 @@
 import * as PIXI from 'pixi.js'
-import Snake from './snake.png';
 
 const app = new PIXI.Application({ width: 1200, height: 600 });
 document.body.appendChild(app.view);
@@ -9,13 +8,13 @@ let count = 0;
 // build a rope!
 const ropeLength = 45;
 
-const points = [];
+const points: PIXI.Point[] = [];
 
 for (let i = 0; i < 25; i++) {
     points.push(new PIXI.Point(i * ropeLength, 0));
 }
-
-const strip = new PIXI.SimpleRope(PIXI.Texture.from(Snake), points);
+const imageSrc = require('./snake.png')
+const strip = new PIXI.SimpleRope(PIXI.Texture.from(imageSrc), points);
 
 strip.x = -40;
 strip.y = 300;
