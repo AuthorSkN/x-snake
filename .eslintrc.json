@@ -1,0 +1,95 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:json/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "env": {
+    "es6": true
+  },
+  "rules": {
+    "semi": [
+      "error",
+      "never"
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "eol-last": [
+      "error",
+      "always"
+    ],
+    "@typescript-eslint/no-use-before-define": "off"
+  },
+  "parserOptions": {
+    "jsx": false,
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/src/**/*.ts"
+      ],
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "project": "./tsconfig.json"
+      },
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "globals": {
+        "browser": true
+      },
+      "env": {
+        "browser": true
+      },
+      "rules": {
+        "indent": "off",
+        "@typescript-eslint/indent": [
+          "error",
+          4,
+          {
+            "FunctionExpression": {
+              "parameters": "first"
+            },
+            "SwitchCase": 1
+          }
+        ],
+        "@typescript-eslint/array-type": "error"
+      }
+    },
+    {
+      "files": [
+        "webpack.*.js"
+      ],
+      "extends": [
+        "plugin:node/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    },
+    {
+      "files": [
+        "*.json"
+      ],
+      "plugins": [
+        "json"
+      ],
+      "rules": {
+        "indent": [
+          "error",
+          2
+        ],
+        "@typescript-eslint/indent": "off"
+      }
+    }
+  ],
+  "ignorePatterns": [
+    "*.d.ts"
+  ]
+}

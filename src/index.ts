@@ -1,56 +1,60 @@
-import * as PIXI from 'pixi.js'
+import * as PIXI from "pixi.js"
+import SnakeImg from "./snake.png"
+import { log } from "./functions"
 
-const app = new PIXI.Application({ width: 1200, height: 600 });
-document.body.appendChild(app.view);
+log("start app")
 
-let count = 0;
+const app = new PIXI.Application({ width: 1200, height: 600 })
+document.body.appendChild(app.view)
+
+let count = 0
 
 // build a rope!
-const ropeLength = 45;
+const ropeLength = 45
 
-const points: PIXI.Point[] = [];
+const points: PIXI.Point[] = []
 
 for (let i = 0; i < 25; i++) {
-    points.push(new PIXI.Point(i * ropeLength, 0));
+    points.push(new PIXI.Point(i * ropeLength, 0))
 }
-const imageSrc = require('./snake.png')
-const strip = new PIXI.SimpleRope(PIXI.Texture.from(imageSrc), points);
 
-strip.x = -40;
-strip.y = 300;
+const strip = new PIXI.SimpleRope(PIXI.Texture.from(SnakeImg), points)
 
-app.stage.addChild(strip);
+strip.x = -40
+strip.y = 300
 
-const g = new PIXI.Graphics();
-g.x = strip.x;
-g.y = strip.y;
+app.stage.addChild(strip)
+
+const g = new PIXI.Graphics()
+g.x = strip.x
+g.y = strip.y
 //app.stage.addChild(g);
 
 // start animating
 app.ticker.add(() => {
-    count += 0.1;
+    count += 0.1
 
     // make the snake
     for (let i = 0; i < points.length; i++) {
-        points[i].y = Math.sin((i * 0.5) + count) * 30;
-        points[i].x = i * ropeLength + Math.cos((i * 0.3) + count) * 20;
+        points[i].y = Math.sin((i * 0.5) + count) * 30
+        points[i].x = i * ropeLength + Math.cos((i * 0.3) + count) * 20
     }
-    renderPoints();
-});
+    renderPoints()
+})
 
 function renderPoints() {
-    g.clear();
+    g.clear()
 
-    g.lineStyle(2, 0xffc2c2);
-    g.moveTo(points[0].x, points[0].y);
+    g.lineStyle(2, 0xffc2c2)
+    g.moveTo(points[0].x, points[0].y)
 
     for (let i = 1; i < points.length; i++) {
-        g.lineTo(points[i].x, points[i].y);
+        g.lineTo(points[i].x, points[i].y)
     }
 
     for (let i = 1; i < points.length; i++) {
-        g.beginFill(0xff0022);
-        g.drawCircle(points[i].x, points[i].y, 10);
-        g.endFill();
+        g.beginFill(0xff0022)
+        g.drawCircle(points[i].x, points[i].y, 10)
+        g.endFill()
     }
 }
